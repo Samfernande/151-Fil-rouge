@@ -26,6 +26,19 @@ class ModelTeacher
 
         return $this->req->fetchALL(PDO::FETCH_ASSOC);
     }
+
+    function getTeacherByID($id)
+    {
+        $this->req = $this->dataBase->connector->query('SELECT * FROM t_teacher JOIN t_section ON fkSection = idSection WHERE idTeacher =' . $id);
+
+        return $this->req->fetchALL(PDO::FETCH_ASSOC)[0];
+    }
+
+    function removeTeacher($id)
+    {
+        $this->req = $this->dataBase->connector->query("DELETE FROM t_teacher WHERE idTeacher = {$id}");
+    }
+
 }
 
 ?>

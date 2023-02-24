@@ -17,8 +17,8 @@
 
     <div class='margin1'>
 
-        <a class='margin1' href="#">Menu principal</a>
-        <a class='margin1' href="#">Ajouter un enseignant</a>
+        <a class='margin1' href="?link=main">Menu principal</a>
+        <a class='margin1' href="?link=addTeacher">Ajouter un enseignant</a>
 
     </div>
   

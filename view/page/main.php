@@ -32,7 +32,7 @@
 
 				<td class='containerAlignRight'>
                     <a class='marginSide1 alignRight' href=<?php echo "?link=updateTeacher&idTeacher=" . $teacher['idTeacher'] ?>>Modifier</a> 
-                    <a class='marginSide1 alignRight'>Supprimer</a> 
+                    <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet enseignant ?')" class='marginSide1 alignRight' href = <?php echo "?link=main&delete=yes&idTeacher=" . $teacher['idTeacher'] ?>>Supprimer</a> 
                     <a class='marginSide1 alignRight' href=<?php echo "?link=detail&idTeacher=" . $teacher['idTeacher'] ?>>Détails</a>
                 </td>
 			</tr>

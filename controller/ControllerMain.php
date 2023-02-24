@@ -18,6 +18,7 @@ class ControllerMain
     function __construct()
     {
         $this->modelTeacher = new ModelTeacher();
+        $this->deleteTeacher();
         $this->data = $this->modelTeacher->getTeachers();
         $this->callPage($this->data);
     }
@@ -28,6 +29,17 @@ class ControllerMain
         include 'view/header.php';
         include 'view/page/main.php';
         include 'view/footer.php';
+    }
+
+    function deleteTeacher()
+    {
+        if(isset($_GET['delete']) && $_GET['delete'] == 'yes')
+        {
+            $id = $_GET['idTeacher'] ?? '';
+            $this->modelTeacher->removeTeacher($id);
+            header('Location: ?link=main');
+
+        }
     }
 
 }
