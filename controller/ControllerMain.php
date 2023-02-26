@@ -23,7 +23,7 @@ class ControllerMain
         $this->callPage($this->data);
     }
 
-
+    // Méthode permettant d'afficher la page avec les données en question
     function callPage($data)
     {
         include 'view/header.php';
@@ -31,13 +31,15 @@ class ControllerMain
         include 'view/footer.php';
     }
 
+    // Méthode permettant de supprimer un enseignant
     function deleteTeacher()
     {
-        if(isset($_GET['delete']) && $_GET['delete'] == 'yes')
+        if(isset($_GET['delete']) && $_GET['delete'] == 'yes' && isset($_SESSION['admin']) && $_SESSION['admin'] == 1)
         {
             $id = $_GET['idTeacher'] ?? '';
             $this->modelTeacher->removeTeacher($id);
             header('Location: ?link=main');
+            exit();
 
         }
     }

@@ -36,8 +36,27 @@ class ModelTeacher
 
     function removeTeacher($id)
     {
-        $this->req = $this->dataBase->connector->query("DELETE FROM t_teacher WHERE idTeacher = {$id}");
+        $this->req = $this->dataBase->connector->query("DELETE FROM t_teacher WHERE idTeacher =" . $id);
     }
+
+    function updateTeacher($id, $teaFirstname, $teaName, $teaGender, $teaNickname, $teaOrigine, $fkSection)
+    {
+        $stmt = $this->dataBase->connector->prepare("UPDATE t_teacher SET teaFirstname = ?, teaName = ?, teaGender = ?, teaNickname = ?, teaOrigine = ?, fkSection = ? WHERE idTeacher = ?");
+        $stmt->execute([$teaFirstname, $teaName, $teaGender, $teaNickname, $teaOrigine, $fkSection, $id]);
+    }
+
+    function addTeacher($teaFirstname, $teaName, $teaGender, $teaNickname, $teaOrigine, $fkSection)
+    {
+        $stmt = $this->dataBase->connector->prepare("INSERT INTO t_teacher (teaFirstname, teaName, teaGender, teaNickname, teaOrigine, fkSection) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$teaFirstname, $teaName, $teaGender, $teaNickname, $teaOrigine, $fkSection]);
+    }
+
+
+    
+
+
+
+    
 
 }
 

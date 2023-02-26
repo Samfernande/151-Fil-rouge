@@ -8,6 +8,11 @@
     justify-content:flex-end;
 }
 
+.containerAlignLeft{
+    display: flex;
+    justify-content:flex-start;
+}
+
 .littleContainer {
     width: 50%;
 }

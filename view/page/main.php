@@ -31,9 +31,20 @@
                 </td>
 
 				<td class='containerAlignRight'>
-                    <a class='marginSide1 alignRight' href=<?php echo "?link=updateTeacher&idTeacher=" . $teacher['idTeacher'] ?>>Modifier</a> 
-                    <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet enseignant ?')" class='marginSide1 alignRight' href = <?php echo "?link=main&delete=yes&idTeacher=" . $teacher['idTeacher'] ?>>Supprimer</a> 
+
+                <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1) {  ?>
+
+                    <?php if(isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {  ?>
+
+                        <a class='marginSide1 alignRight' href=<?php echo "?link=updateTeacher&idTeacher=" . $teacher['idTeacher'] ?>>Modifier</a> 
+                        <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet enseignant ?')" class='marginSide1 alignRight' href = <?php echo "?link=main&delete=yes&idTeacher=" . $teacher['idTeacher'] ?>>Supprimer</a>
+
+                    <?php }  ?>
+
                     <a class='marginSide1 alignRight' href=<?php echo "?link=detail&idTeacher=" . $teacher['idTeacher'] ?>>Détails</a>
+
+                <?php }  ?>
+                
                 </td>
 			</tr>
 

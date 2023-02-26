@@ -15,6 +15,7 @@ class DataBase
     {
         try
         {
+            // Trouver une solution pour le p***** de fichier config
             $this->connector = new PDO('mysql:host=localhost:6044;dbname=db_school;charset=utf8' , 'root', 'root');
         }
         catch (PDOException $e)

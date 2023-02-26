@@ -3,3 +3,167 @@
     color: #444;
     margin-top: 50px;
 }
+
+
+.formUpdateTeacher {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Ajout de cette ligne */
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 20px;
+  }
+
+  
+  .formUpdateTeacher input[type="text"],
+  .formUpdateTeacher select,
+  .formUpdateTeacher textarea {
+    font-size: 1rem;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    background-color: #fff;
+  }
+  
+  .formUpdateTeacher input[type="text"]:focus,
+  .formUpdateTeacher select:focus,
+  .formUpdateTeacher textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px #666;
+  }
+  
+  .formUpdateTeacher button[type="submit"] {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .formUpdateTeacher button[type="submit"]:hover {
+    background-color: #2E8B57;
+  }
+  
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: green;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  .loginPopup {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: green;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  .redLoginPopup
+  {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: red;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  .popup.show {
+    opacity: 1;
+  }
+  
+  .popup.hide {
+    opacity: 0;
+  }
+
+  .loginPopup.show {
+    opacity: 1;
+  }
+  
+  .loginPopup.hide {
+    opacity: 0;
+  }
+
+  .redLoginPopup.show {
+    opacity: 1;
+  }
+  
+  .redLoginPopup.hide {
+    opacity: 0;
+  }
+
+  .formLogin {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .formLogin label {
+    font-size: 0.8em;
+    color: #555;
+    transition: all 0.2s ease-in-out;
+    margin: 2%;
+  }
+  
+  .formLogin input {
+    padding: 0.5em;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 0.3em;
+    transition: all 0.2s ease-in-out;
+    margin: 2%;
+  }
+  
+  .formLogin input:focus {
+    border-color: #aaa;
+  }
+
+  .formLogin button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .formLogin button:hover {
+    background-color: #3e8e41;
+  }
+  
+  
+
+  
+  
