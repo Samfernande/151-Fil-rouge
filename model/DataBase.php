@@ -7,6 +7,8 @@ DATE : 24.02.2023
 DESCRIPTION : Page de connexion à la base de données.
 */
 
+require __DIR__ . "\..\config.php";
+
 class DataBase
 {
     public $connector;
@@ -16,7 +18,7 @@ class DataBase
         try
         {
             // Trouver une solution pour le p***** de fichier config
-            $this->connector = new PDO('mysql:host=localhost:6044;dbname=db_school;charset=utf8' , 'root', 'root');
+            $this->connector = new PDO("mysql:host=$host:$port;dbname=$dbname;charset=$charset" , $user, $password);
         }
         catch (PDOException $e)
         {
