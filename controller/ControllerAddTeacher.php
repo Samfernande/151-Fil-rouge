@@ -40,22 +40,27 @@ class ControllerAddTeacher
     // Méthode qui s'effectue lorsque l'utilisateur modifie un enseignant.
     function addInfo()
     {
-        $teaFirstname = htmlspecialchars($_POST['firstname']) ?? '';
-        $teaName = htmlspecialchars($_POST['name']) ?? '';
-        $teaNickname = htmlspecialchars($_POST['nickname']) ?? '';
-        $teaGender = $_POST['gender'] ?? '';
-        $teaOrigine = htmlspecialchars($_POST['origin']) ?? '';
-        $teaSection = $_POST['section'] ?? '';
-
-        // Traitement de la variable du genre.
-        $teaGender = $teaGender == 'male' ? 'H' : 'F';
-
-        // Si tous les paramètres sont bons, envoi des données au modèle qui va les ajouter dans la base de données
-        if(!empty($teaFirstname) && !empty($teaName) && !empty($teaNickname) && !empty($teaGender) && !empty($teaOrigine) && !empty($teaSection))
+        if(isset($_POST['firstname']) && isset($_POST['name']) && isset($_POST['nickname']) && isset($_POST['gender']) && isset($_POST['origin']) && isset($_POST['section']))
         {
-            $this->model['modelTeacher']->addTeacher($teaFirstname, $teaName, $teaGender, $teaNickname, $teaOrigine, $this->getRightSection($teaSection));
-            $this->data['animation'] = true;
+            $teaFirstname = htmlspecialchars($_POST['firstname']) ?? '';
+            $teaName = htmlspecialchars($_POST['name']) ?? '';
+            $teaNickname = htmlspecialchars($_POST['nickname']) ?? '';
+            $teaGender = $_POST['gender'] ?? '';
+            $teaOrigine = htmlspecialchars($_POST['origin']) ?? '';
+            $teaSection = $_POST['section'] ?? '';
+
+            // Traitement de la variable du genre.
+            $teaGender = $teaGender == 'male' ? 'H' : 'F';
+
+            // Si tous les paramètres sont bons, envoi des données au modèle qui va les ajouter dans la base de données
+            if(!empty($teaFirstname) && !empty($teaName) && !empty($teaNickname) && !empty($teaGender) && !empty($teaOrigine) && !empty($teaSection))
+            {
+                $this->model['modelTeacher']->addTeacher($teaFirstname, $teaName, $teaGender, $teaNickname, $teaOrigine, $this->getRightSection($teaSection));
+                $this->data['animation'] = true;
+            }
+
         }
+
 
     }
 

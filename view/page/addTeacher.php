@@ -55,7 +55,15 @@
 
 <p id = 'popup' class='popup'>Enseignant ajouté avec succès !</p>
 
-<?php echo $data['animation'] ? "<script src='resources/js/popUp.js'></script>" : '' ?>
+<?php
+
+      if(isset($data['animation']) && $data['animation'])
+      {
+          echo "<script src='resources/js/popUp.js'></script>"; 
+      }
+  
+
+?>
 
 
 

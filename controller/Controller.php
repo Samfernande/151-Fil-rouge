@@ -58,23 +58,29 @@ class Controller
     // Méthode permettant à l'utilisateur de se login.
     function login()
     {
-        $login = htmlspecialchars($_POST['login']) ?? '';
-        $password = htmlspecialchars($_POST['password']) ?? '';
 
-        if(!empty($login) || !empty($password))
+        if(isset($_POST['login']) && isset($_POST['password']))
         {
-            foreach ($this->model->getUsers() as $user)
+
+        
+            $login = htmlspecialchars($_POST['login']) ?? '';
+            $password = htmlspecialchars($_POST['password']) ?? '';
+
+            if(!empty($login) || !empty($password))
             {
-                if($user['useLogin'] == $login && password_verify($password, $user['usePassword']))
+                foreach ($this->model->getUsers() as $user)
                 {
-                    $_SESSION['isConnected'] = 1;
-                    $_SESSION['admin'] = $user['useAdministrator'] == 1 ? 1 : 0;
-                    $_SESSION['username'] = $user['useLogin'];
+                    if($user['useLogin'] == $login && password_verify($password, $user['usePassword']))
+                    {
+                        $_SESSION['isConnected'] = 1;
+                        $_SESSION['admin'] = $user['useAdministrator'] == 1 ? 1 : 0;
+                        $_SESSION['username'] = $user['useLogin'];
+                    }
+
                 }
 
+                $_SESSION['animation'] = 1;
             }
-
-            $_SESSION['animation'] = 1;
 
         }
     }
@@ -82,7 +88,7 @@ class Controller
     // Méthode permettant à l'utilisateur de se déconnecter.
     function disconnect()
     {
-        if($_GET['disconnect'] == 'yes')
+        if(isset($_GET['disconnect']) && $_GET['disconnect'] == 'yes')
         {
             $_SESSION = [];
             header('Location: ?link=main');

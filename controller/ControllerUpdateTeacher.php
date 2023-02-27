@@ -40,26 +40,33 @@ class ControllerUpdateTeacher
     // Méthode qui s'effectue lorsque l'utilisateur modifie un enseignant.
     function updateInfo()
     {
-        $teaFirstname = htmlspecialchars($_POST['firstname']) ?? '';
-        $teaName = htmlspecialchars($_POST['name']) ?? '';
-        $teaNickname = htmlspecialchars($_POST['nickname']) ?? '';
-        $teaGender = $_POST['gender'] ?? '';
-        $teaOrigine = htmlspecialchars($_POST['origin']) ?? '';
-        $teaSection = $_POST['section'] ?? '';
 
-        // Traitement de la variable du genre.
-        $teaGender = $teaGender == 'male' ? 'H' : 'F';
-
-        // Si tous les paramètres sont bons, envoi des données au modèle qui va les update dans la base de données
-        if(!empty($teaFirstname) && !empty($teaName) && !empty($teaNickname) && !empty($teaGender) && !empty($teaOrigine) && !empty($teaSection))
+        if(isset($_POST['firstname']) && isset($_POST['name']) && isset($_POST['nickname']) && isset($_POST['gender']) && isset($_POST['origin']) && isset($_POST['section']))
         {
-            $this->model['modelTeacher']->updateTeacher($this->idTeacher, $teaFirstname, $teaName, $teaGender, $teaNickname, $teaOrigine, $this->getRightSection($teaSection));
-            $this->data['animation'] = true;
 
-            // Les data sont modifiées, il faut donc modifier la variable
-            $this->data['dataTeacher'] = $this->model['modelTeacher']->getTeacherByID($this->idTeacher);
-            $this->data['dataSection'] = $this->model['modelSection']->getSections();
+            $teaFirstname = htmlspecialchars($_POST['firstname']) ?? '';
+            $teaName = htmlspecialchars($_POST['name']) ?? '';
+            $teaNickname = htmlspecialchars($_POST['nickname']) ?? '';
+            $teaGender = $_POST['gender'] ?? '';
+            $teaOrigine = htmlspecialchars($_POST['origin']) ?? '';
+            $teaSection = $_POST['section'] ?? '';
+
+            // Traitement de la variable du genre.
+            $teaGender = $teaGender == 'male' ? 'H' : 'F';
+
+            // Si tous les paramètres sont bons, envoi des données au modèle qui va les update dans la base de données
+            if(!empty($teaFirstname) && !empty($teaName) && !empty($teaNickname) && !empty($teaGender) && !empty($teaOrigine) && !empty($teaSection))
+            {
+                $this->model['modelTeacher']->updateTeacher($this->idTeacher, $teaFirstname, $teaName, $teaGender, $teaNickname, $teaOrigine, $this->getRightSection($teaSection));
+                $this->data['animation'] = true;
+
+                // Les data sont modifiées, il faut donc modifier la variable
+                $this->data['dataTeacher'] = $this->model['modelTeacher']->getTeacherByID($this->idTeacher);
+                $this->data['dataSection'] = $this->model['modelSection']->getSections();
+            }
+
         }
+
 
     }
 
