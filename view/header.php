@@ -65,15 +65,18 @@
 
     <p id = 'popup' class='loginPopup'>Vous êtes connecté.</p>
 
-    <?php } else if ($_SESSION['animation'] == 1) { ?>
+    <?php } else if (isset($_SESSION['animation']) && $_SESSION['animation'] == 1) { ?>
 
     <p id = 'popup' class='redLoginPopup'>Nom d'utilisateur ou mot de passe incorrect.</p>
 
     <?php }?>
 
-    <?php 
-    echo $_SESSION['animation'] == 1 ? "<script src='resources/js/popUp.js'></script>" : ''; 
-    $_SESSION['animation'] = 0;
+    <?php
+    if(isset($_SESSION['isConnected']))
+    {
+        echo $_SESSION['animation'] == 1 ? "<script src='resources/js/popUp.js'></script>" : ''; 
+        $_SESSION['animation'] = 0;
+    }
     ?>
   
 

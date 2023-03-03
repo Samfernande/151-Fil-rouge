@@ -39,13 +39,22 @@ class Controller
                 $this->actualController = new ControllerMain();
                 break;
             case 'addTeacher':
-                $_SESSION['admin'] == 1 ? $this->actualController = new ControllerAddTeacher() : $this->actualController = new ControllerError();
+                if(isset($_SESSION['admin']) && $_SESSION['admin'] == 1)
+                    $this->actualController = new ControllerAddTeacher();
+                else
+                    $this->actualController = new ControllerError();
                 break;
             case 'detail':
-                $_SESSION['isConnected'] == 1 ? $this->actualController = new ControllerDetails() : $this->actualController = new ControllerError();
+                if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1)
+                    $this->actualController = new ControllerDetails();
+                else 
+                    $this->actualController = new ControllerError();
                 break;
             case 'updateTeacher':
-                $_SESSION['admin'] == 1 ? $this->actualController = new ControllerUpdateTeacher() : $this->actualController = new ControllerError();
+                if(isset($_SESSION['admin']) && $_SESSION['admin'] == 1)
+                    $this->actualController = new ControllerUpdateTeacher();
+                else
+                    $this->actualController = new ControllerError();
                 break;
             default:
                 $this->actualController = new ControllerMain();

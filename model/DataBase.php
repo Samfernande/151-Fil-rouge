@@ -18,7 +18,7 @@ class DataBase
         try
         {
             // Trouver une solution pour le p***** de fichier config
-            $this->connector = new PDO("mysql:host=$host:$port;dbname=$dbname;charset=$charset" , $user, $password);
+            $this->connector = new PDO("mysql:host=" . HOST . ";port=" . PORT . ";dbname=" . DBNAME . ";charset=" . CHARSET, USER, PASSWORD);
         }
         catch (PDOException $e)
         {
